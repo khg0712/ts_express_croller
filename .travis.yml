@@ -4,5 +4,4 @@ services:
 env:
   - PORT=3000
 script:
-  - npm run build
   - npm run test
