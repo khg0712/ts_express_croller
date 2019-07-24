@@ -1,15 +1,8 @@
 laguage: nodejs
 services:
-    - mongodb
-cache:
-  directories:
-    - node_modules
+  - mongodb
 env:
   - PORT=3000
-before_install:
-  - npm install --global npm@latest
-install:
-  - npm install
 script:
   - npm run build
   - npm run test
