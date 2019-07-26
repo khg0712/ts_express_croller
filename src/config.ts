@@ -1,6 +1,6 @@
-import dotenv from 'dotenv';
+import { config } from 'dotenv';
 
-dotenv.config();
+config();
 let path;
 switch (process.env.NODE_ENV) {
   case 'test':
@@ -13,7 +13,7 @@ switch (process.env.NODE_ENV) {
     path = `${__dirname}/../../.env.development`;
 }
 
-dotenv.config({ path });
+config({ path });
 
 export const PORT = process.env.PORT;
 export const MONGODB_URI = process.env.MONGODB_URI;

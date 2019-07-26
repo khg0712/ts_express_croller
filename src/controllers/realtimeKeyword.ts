@@ -5,6 +5,6 @@ export const saveRealtimeKeyword = (realtimeKeywords: string[]) => {
   const newKeywords = new RealtimeKeyword({ realtimeKeywords });
   newKeywords.save(err => {
     if (err) logger.error(err);
-    else logger.debug(`save keyword to db ${realtimeKeywords}`);
+    else logger.info(`save keyword to db ${realtimeKeywords}`);
   });
 };

@@ -1,6 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import { PORT, MONGODB_URI, ENV } from './utils/config';
+import { PORT, MONGODB_URI, ENV } from './config';
 import { crawl } from './utils/crawl';
 import { saveRealtimeKeyword } from './controllers/realtimeKeyword';
 import logger from './utils/logger';

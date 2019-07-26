@@ -1,7 +1,7 @@
 import { createLogger, LoggerOptions, transports, format } from 'winston';
 import winstonDailyRotateFile from 'winston-daily-rotate-file';
 import fs from 'fs';
-import { ENV } from './config';
+import { ENV } from '../config';
 
 const options: LoggerOptions = {
   format: format.combine(
@@ -33,7 +33,7 @@ const options: LoggerOptions = {
 const logger = createLogger(options);
 
 if (ENV !== 'production') {
-  logger.debug('Logging initialized at debug level');
+  logger.info('Logging initialized at debug level');
 }
 
 export default logger;
