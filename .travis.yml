@@ -1,8 +1,9 @@
 laguage: nodejs
 services:
   - mongodb
-env:
-  - PORT=3000
+notifications:
+  email:
+    on_failure: change
 script:
   - npm install
   - npm run test
