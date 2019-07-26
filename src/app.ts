@@ -25,8 +25,10 @@ const crawlResultSaver = async () => {
   saveRealtimeKeyword(result);
 };
 
-crawlResultSaver();
-setInterval(crawlResultSaver, 1000 * 10 * 60);
+if (ENV !== 'test') {
+  crawlResultSaver();
+  setInterval(crawlResultSaver, 1000 * 10 * 60);
+}
 
 app.set('port', PORT || 3000);
 app.set('env', ENV || 'development');
