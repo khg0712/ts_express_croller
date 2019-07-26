@@ -1,4 +1,4 @@
-import app from '../src/app';
+import app, { disconnectDB } from '../src/app';
 import supertest from 'supertest';
 
 describe('test the root path', () => {
@@ -11,3 +11,5 @@ describe('test the root path', () => {
       });
   });
 });
+
+disconnectDB();

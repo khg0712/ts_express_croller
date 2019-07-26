@@ -38,3 +38,4 @@ app.set('view engine', 'pug');
 app.get('/', index);
 
 export default app;
+export const disconnectDB = mongoose.disconnect;
