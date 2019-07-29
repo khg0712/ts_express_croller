@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage --verbose --detectOpenHandles",
-    "start": "tsc && node dist"
+    "start": "tsc && node dist",
+    "build": "tsc && npm run lint",
+    "lint": "tsc --noEmit && tslint --project tsconfig.json --quiet --fix \"./src/**/*\""
   },
   "author": "",
   "license": "ISC",
