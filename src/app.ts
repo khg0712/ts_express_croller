@@ -14,21 +14,19 @@ mongoose
   .connect(mongodbUri, { useNewUrlParser: true })
   .then(() => {
     logger.info('db connected');
+    const crawlResultSaver = async () => {
+      const result = await crawl();
+      saveRealtimeKeyword(result);
+    };
+    if (ENV !== 'test') {
+      crawlResultSaver();
+      setInterval(crawlResultSaver, 1000 * 10 * 60);
+    }
   })
   .catch(err => {
     logger.error('db connect errored');
     logger.error(err);
   });
-
-const crawlResultSaver = async () => {
-  const result = await crawl();
-  saveRealtimeKeyword(result);
-};
-
-if (ENV !== 'test') {
-  crawlResultSaver();
-  setInterval(crawlResultSaver, 1000 * 10 * 60);
-}
 
 app.set('port', PORT || 3000);
 app.set('env', ENV || 'development');
