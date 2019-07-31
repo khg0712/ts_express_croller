@@ -12,6 +12,7 @@ const options: LoggerOptions = {
   ),
   transports: [
     new transports.Console({
+      silent: ENV === 'test',
       level: ENV === 'production' ? 'error' : 'debug',
       format: format.combine(
         format.colorize(),
