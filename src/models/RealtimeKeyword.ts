@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
-import moment, { Moment } from 'moment';
+import moment from 'moment';
 
 export type RealtimeKeywordDocument = mongoose.Document & {
   realtimeKeywords: string[];
-  timeStamp: Moment;
+  timeStamp: string;
 };
 
 const realtimeKeywordsSchema = new mongoose.Schema({
