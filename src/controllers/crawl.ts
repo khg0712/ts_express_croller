@@ -1,24 +1,9 @@
-import cheerio from 'cheerio';
-import axios from 'axios';
 import logger from '../utils/logger';
+import { Request, Parse } from '../types';
 
-export const crawl = async () => {
+export const crawl = async (request: Request, parse: Parse) => {
   logger.info('crawl realtime keyword');
-  const response = await axios('https://www.naver.com/');
-
-  let $: CheerioStatic;
-  if (response.status === 200) $ = cheerio.load(response.data);
-  else return null;
-
-  const crawledRealtimeKeywords = $(
-    '.ah_roll_area.PM_CL_realtimeKeyword_rolling ul > li span.ah_k',
-  );
-  const keywords: string[] = $(crawledRealtimeKeywords)
-    .map(
-      (i, ele): string => {
-        return $(ele).text();
-      },
-    )
-    .get();
-  return keywords;
+  const { status, data } = await request();
+  if (status === 200) return parse(data);
+  return null;
 };

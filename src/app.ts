@@ -6,6 +6,7 @@ import { saveRealtimeKeyword } from './controllers/realtimeKeyword';
 import logger from './utils/logger';
 import { index } from './controllers/home';
 import path from 'path';
+import { request, parse } from './utils/crawl/naverRealtimeKeyword';
 
 const app = express();
 const mongodbUri = MONGODB_URI || '';
@@ -15,7 +16,7 @@ mongoose
   .then(() => {
     logger.info('db connected');
     const crawlResultSaver = async () => {
-      const result = await crawl();
+      const result = await crawl(request, parse);
       result && saveRealtimeKeyword(result);
     };
     if (ENV !== 'test') {
