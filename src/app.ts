@@ -16,7 +16,7 @@ mongoose
     logger.info('db connected');
     const crawlResultSaver = async () => {
       const result = await crawl();
-      saveRealtimeKeyword(result);
+      result && saveRealtimeKeyword(result);
     };
     if (ENV !== 'test') {
       crawlResultSaver();
