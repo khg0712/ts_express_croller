@@ -1,6 +1,6 @@
-import * as crawler from '../../src/utils/crawl';
+import * as crawler from '../../src/controllers/crawl';
 
-jest.mock('../../src/utils/crawl.ts');
+jest.mock('../../src/controllers/crawl.ts');
 
 test('is crawl method called', async () => {
   await crawler.crawl();
