@@ -1,7 +1,7 @@
-import cheerio from 'cheerio';
+import { load } from 'cheerio';
 
 export const parse = (data: string) => {
-  const $ = cheerio.load(data);
+  const $ = load(data);
   const crawledRealtimeKeywords = $(
     '.ah_roll_area.PM_CL_realtimeKeyword_rolling ul > li span.ah_k',
   );
