@@ -1,20 +1,20 @@
 import { saveRealtimeKeyword } from '../../src/controllers/realtimeKeyword';
-import {
-  RealtimeKeyword,
-  RealtimeKeywordDocument,
-} from '../../src/models/RealtimeKeyword';
+import * as RealtimeKeywordModel from '../../src/models/RealtimeKeyword';
 import logger from '../../src/utils/logger';
 
-jest.mock('../../src/models/RealtimeKeyword');
-const MockRealtimeKeyword = new RealtimeKeyword() as jest.Mocked<
-  RealtimeKeywordDocument
->;
-MockRealtimeKeyword.save = jest.fn();
+const realtimeWrodSpy = jest.spyOn(
+  RealtimeKeywordModel as any,
+  'RealtimeKeyword',
+);
+
+const loggerInfoSpy = jest.spyOn(logger, 'info');
+const loggerErrorSpy = jest.spyOn(logger, 'error');
 
 describe('realtime keyword controller works well', () => {
   it('save ', () => {
-    // const realtimeKeywordModel = jest.spyOn(Model, 'RealtimeKeyword');
     saveRealtimeKeyword([]);
-    expect(RealtimeKeyword).toHaveBeenCalledTimes(1);
+    expect(realtimeWrodSpy).toHaveBeenCalledTimes(1);
+    expect(loggerErrorSpy).toHaveBeenCalledTimes(0);
+    expect(loggerInfoSpy).toHaveBeenCalledTimes(0);
   });
 });
